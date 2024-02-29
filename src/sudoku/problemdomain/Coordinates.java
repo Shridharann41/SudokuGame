@@ -1,5 +1,7 @@
 package sudoku.problemdomain;
 
+import java.util.Objects;
+
 public class Coordinates {
     private final int x;
     private final int y;
@@ -14,7 +16,7 @@ public class Coordinates {
     }
 
     public int getY() {
-        return y;                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     urn y;
+        return y;
     }
 
     @Override
