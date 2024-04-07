@@ -5,6 +5,7 @@ import javafx.scene.Group;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.paint.Color;
 
+import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
 import sudoku.problemdomain.Coordinates;
 import sudoku.problemdomain.SudokuGame;
@@ -65,23 +66,71 @@ public class UserInterfaceImpl implements IUserInterfaceContract.View,
         while (index < 8) {
             int thickness;
 
-            if (index == 2 || 5) {
+            if (index == 2 || index == 5) {
                 thickness = 3;
             } else {
                 thickness = 2;
             }
 
             Rectangle verticalLine = getLine(
+                    BOARD_PADDING,
+                    xAndY + 64*index,
+                    thickness,
+                    BOARD_X_AND_Y
+            );
+            Rectangle horizontalLine = getLine(
                     xAndY + 64 * index,
                     BOARD_PADDING,
                     BOARD_X_AND_Y,
                     thickness
-
+            );
+            root.getChildren().addAll(
+                    verticalLine,
+                    horizontalLine
             );
         }
     }
 
+
+    private Rectangle getLine(double x,
+                              double y,
+                              double height,
+                              double width) {
+        Rectangle line = new Rectangle();
+
+        line.setX(x);
+        line.setY(y);
+        line.setHeight(height);
+        line.setWidth(width);
+
+        line.setFill(Color.BLACK);
+        return line;
+    }
+
     private void drawTextFields(Group root) {
+    final int xOrigin = 50;
+    final int yOrigin = 50;
+
+    final int xAndYDelta = 64;
+
+    //O(n^2) Runtime complexity
+
+        for(int xIndex = 0; xIndex < 9; xIndex++) {
+            for(int yIndex = 0; yIndex <9; yIndex++){
+                int x = xOrigin + xIndex * xAndYDelta;
+                int y = xOrigin + yIndex * xAndYDelta;
+
+                SudokuTextField title = new SudokuTextField(xIndex, yIndex);
+                styleSudokuTile(tile, x, y);
+
+
+
+            }
+        }
+
+
+
+
     }
 
     private void drawSudokuBoard(Group root) {
