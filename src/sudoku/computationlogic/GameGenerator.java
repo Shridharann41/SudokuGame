@@ -68,7 +68,7 @@ public class GameGenerator {
                     newGrid[xCoordinate][yCoordinate] = value;
 
                     //if value results in an invalid game, then re-assign that element to 0 and try again
-                    if (GameLogic.sudokuIsInvalid(newGrid)) {
+                    if (sudoku.computationlogic.GameLogic.sudokuIsInvalid(newGrid)) {
                         newGrid[xCoordinate][yCoordinate] = 0;
                         interrupt++;
                     }
